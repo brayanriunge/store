@@ -18,13 +18,6 @@ export default function Navbar() {
           {/* on the left */}
           <div className="p-2 ">
             <Link href={"/"} className="flex justify-start items-center gap-4 ">
-              {/* <Image
-                src={Logo}
-                alt="logo"
-                height={20}
-                width={60}
-                className="rounded-full justify-items-start"
-              /> */}
               <FaStoreAlt className="h-8 w-8" />
               <h1 className="text-2xl bold ">EpicStore</h1>
             </Link>
