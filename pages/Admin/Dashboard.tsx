@@ -2,7 +2,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { stringify } from "querystring";
 import React, { FormEvent, useState } from "react";
-import { useForm } from "react-hooks-useform";
+import { useForm } from "react-hook-form";
+
 import { MdCloudUpload } from "react-icons/md";
 
 type FormValues = {
@@ -19,6 +20,12 @@ export default function Dashboard() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const router = useRouter();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
 
   // event handler for file input change
   const handleFileUploadChange = (
