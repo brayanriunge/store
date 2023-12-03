@@ -86,11 +86,18 @@ export default function Dashboard() {
             <div className="flex flex-col items-center gap-5 p-5 ml-4">
               <div className="flex border border-gray-400 relative rounded-md">
                 <input
-                  type="name"
-                  placeholder="name"
+                  type="text"
+                  placeholder="NAME"
+                  id="name"
                   required
                   className="rounded-xl px-6 py-5 focus:outline-none border-none"
+                  {...register("name")}
                 />
+                {errors.name?.message && (
+                  <span className="text-cm text-red-500">
+                    {errors.name.message}
+                  </span>
+                )}
               </div>
               <div className="flex border border-gray-400 relative rounded-md">
                 <input
@@ -101,30 +108,55 @@ export default function Dashboard() {
                   className="rounded-xl px-6 py-5 focus:outline-none border-none"
                   {...register("price")}
                 />
+                {errors.price?.message && (
+                  <span className="text-sm text-red-500">
+                    {errors.price.message}
+                  </span>
+                )}
               </div>
               <div className="flex border border-gray-400 relative rounded-md">
                 <input
-                  type="category"
-                  placeholder="category"
+                  type="text"
+                  placeholder="CATEGORY"
+                  id="category"
                   required
                   className="rounded-md px-6 py-5 focus:outline-none border-none"
+                  {...register("category")}
                 />
+                {errors.category?.message && (
+                  <span className="text-sm text-red-500">
+                    {errors.category.message}
+                  </span>
+                )}
               </div>
               <div className="flex border border-gray-400 relative rounded-md">
                 <input
-                  type="brand"
-                  placeholder="brand"
+                  type="text"
+                  placeholder="BRAND"
+                  id="brand"
                   required
                   className="rounded-md px-6 py-5 focus:outline-none border-none"
+                  {...register("brand")}
                 />
+                {errors.brand?.message && (
+                  <span className="text-sm text-red-500">
+                    {errors.brand.message}
+                  </span>
+                )}
               </div>
               <div className="flex border border-gray-400 relative rounded-md">
                 <input
-                  type="description"
-                  placeholder="Description"
+                  type="text"
+                  placeholder="DESCRIPTION"
+                  id="description"
                   required
                   className="rounded-xl px-6 py-5 focus:outline-none border-none"
                 />
+                {errors.description?.message && (
+                  <span className="text-sm text-red-500">
+                    {errors.description.message}
+                  </span>
+                )}
               </div>
               <div className="flex border border-gray-400 relative rounded-md">
                 <input
