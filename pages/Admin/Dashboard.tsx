@@ -145,8 +145,7 @@ export default function Dashboard() {
                 )}
               </div>
               <div className="flex border border-gray-400 relative rounded-md">
-                <input
-                  type="text"
+                <textarea
                   placeholder="DESCRIPTION"
                   id="description"
                   required
