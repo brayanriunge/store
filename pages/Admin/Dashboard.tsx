@@ -160,11 +160,18 @@ export default function Dashboard() {
               </div>
               <div className="flex border border-gray-400 relative rounded-md">
                 <input
-                  type="quantity"
-                  placeholder="quantity"
+                  type="number"
+                  placeholder="QUANTITY"
+                  id="quantity"
                   required
                   className="rounded-xl px-6 py-5 focus:outline-none border-none"
+                  {...register("quantity")}
                 />
+                {errors.quantity?.message && (
+                  <span className="text-sm text-red-500">
+                    {errors.quantity.message}
+                  </span>
+                )}
               </div>
             </div>
             {/* image */}
