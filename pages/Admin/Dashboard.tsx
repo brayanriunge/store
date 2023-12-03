@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { stringify } from "querystring";
 import React, { FormEvent, useState } from "react";
 import { useForm } from "react-hook-form";
-
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { MdCloudUpload } from "react-icons/md";
 
 type FormValues = {
@@ -209,8 +209,16 @@ export default function Dashboard() {
               <button
                 className="rounded-xl px-6 py-2 bg-orange-400 mt-10 "
                 type="submit"
+                disabled={isUploading}
               >
-                <p className="font-bold hover:text-white">Submit</p>
+                {isUploading ? (
+                  <>
+                    Uploading...
+                    <AiOutlineLoading3Quarters />
+                  </>
+                ) : (
+                  <>Uploading</>
+                )}
               </button>
             </div>
           </form>
