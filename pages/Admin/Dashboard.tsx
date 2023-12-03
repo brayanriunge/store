@@ -94,10 +94,12 @@ export default function Dashboard() {
               </div>
               <div className="flex border border-gray-400 relative rounded-md">
                 <input
-                  type="price"
-                  placeholder="price"
+                  type="number"
+                  id="price"
                   required
+                  placeholder="PRICE"
                   className="rounded-xl px-6 py-5 focus:outline-none border-none"
+                  {...register("price")}
                 />
               </div>
               <div className="flex border border-gray-400 relative rounded-md">
