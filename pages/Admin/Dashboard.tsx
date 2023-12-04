@@ -207,7 +207,7 @@ export default function Dashboard() {
               </label>
 
               <button
-                className="rounded-xl px-6 py-2 bg-orange-400 mt-10 "
+                className="rounded-xl px-10 py-2 bg-orange-400 mt-10 "
                 type="submit"
                 disabled={isUploading}
               >
@@ -217,7 +217,7 @@ export default function Dashboard() {
                     <AiOutlineLoading3Quarters />
                   </>
                 ) : (
-                  <>Uploading</>
+                  <>Upload</>
                 )}
               </button>
             </div>
