@@ -40,7 +40,7 @@ export default function Dashboard() {
   };
 
   //event handler for form submission
-  const handleFormSubmission = async (data: FormValues, e: FormEvent) => {
+  const handleFormSubmission = async (data: FormValues) => {
     setIsUploading(true);
     const { brand, category, description, name, price, quantity } = data;
     const product = {
@@ -52,18 +52,19 @@ export default function Dashboard() {
       description,
     };
     //creating formData to send to the server
-    const formData = new FormData(e.target as HTMLFormElement);
+    const formData = new FormData();
     formData.append("product", JSON.stringify(product));
     if (selectedFile) formData.append("picture", selectedFile);
 
     try {
-      const res = await fetch("localhost:3000/api/products/register", {
+      const res = await fetch("localhost:3000/api/admin/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
+      console.log(res);
       if (res.ok) {
         router.push("/");
       } else {
