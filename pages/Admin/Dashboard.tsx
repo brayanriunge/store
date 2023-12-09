@@ -57,7 +57,7 @@ export default function Dashboard() {
     if (selectedFile) formData.append("picture", selectedFile);
 
     try {
-      const res = await fetch("localhost:3000/api/admin/register", {
+      const res = await fetch("http://localhost:3000/api/admin/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
