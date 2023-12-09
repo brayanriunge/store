@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { v2 as cloudinary } from "cloudinary";
 import formidable from "formidable";
+import { prisma } from "@/utilis/db";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -58,5 +59,27 @@ export default async function handler(
     //checking if any field is missing
     if (!description || !brand || !name || !quantity || !price || !category)
       return res.status(400).json({ message: "missing required fields" });
-  } catch (error) {}
+
+    //creating a new product
+    const newProduct = await prisma.product.create({
+      data: {
+        brand: brand as unknown as string,
+        category: category as unknown as string,
+        description: description as unknown as string,
+        imgUrl: uploadImage.secure_url,
+        name: name as unknown as string,
+        price: parseInt(price as unknown as string),
+        quantity: parseInt(quantity as unknown as string),
+      },
+    });
+    console.log(newProduct);
+    if (!newProduct) {
+      return res.status(401).json({ message: "Failed to created product" });
+    } else {
+      return res.status(200).json({ message: "Product created successfully" });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
 }
