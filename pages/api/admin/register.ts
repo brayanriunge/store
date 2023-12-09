@@ -51,5 +51,12 @@ export default async function handler(
     const uploadImage = await cloudinary.uploader.upload(file.filepath);
     if (!uploadImage)
       return res.status(500).json({ message: "failed to upload image" });
+
+    //extracting fields
+    const { description, brand, name, quantity, price, category } = fields;
+
+    //checking if any field is missing
+    if (!description || !brand || !name || !quantity || !price || !category)
+      return res.status(400).json({ message: "missing required fields" });
   } catch (error) {}
 }
