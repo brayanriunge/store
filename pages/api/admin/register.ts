@@ -7,6 +7,12 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     if (req.method === "POST") {
