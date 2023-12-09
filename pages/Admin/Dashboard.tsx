@@ -83,7 +83,10 @@ export default function Dashboard() {
               Add Products:
             </p>
           </div>
-          <form className="flex items-center justify-between gap-8 ">
+          <form
+            className="flex items-center justify-between gap-8 "
+            onSubmit={handleSubmit(handleFormSubmission)}
+          >
             <div className="flex flex-col items-center gap-5 p-5 ml-4">
               <div className="flex border border-gray-400 relative rounded-md">
                 <input
@@ -203,6 +206,7 @@ export default function Dashboard() {
                     placeholder="picture"
                     required
                     className="rounded-xl px-10 py-5 focus:outline-none w-5/6 border-dotted"
+                    onChange={handleFileUploadChange}
                   />
                 </div>
               </label>
