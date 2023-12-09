@@ -16,7 +16,8 @@ const config = {
 };
 
 const getFormData = async (
-  req: NextApiRequest
+  req: NextApiRequest,
+  res: NextApiResponse
 ): Promise<{ fields: formidable.Fields; files: formidable.Files }> => {
   const options: formidable.Options = {};
   options.maxFileSize = 4000 * 1024 * 1024;
@@ -27,7 +28,12 @@ const getFormData = async (
         if (err) {
           reject(err);
         } else {
-          const productFields = JSON.parse(fields.product[0]);
+          const productFields = fields.product
+            ? JSON.parse(fields.product[0])
+            : null;
+          if (!productFields) {
+            return res.status(400).json({ message: "invalid product data" });
+          }
           resolve({ fields: productFields, files });
         }
       });
@@ -42,7 +48,7 @@ export default async function handler(
     return res.status(405).json({ message: "The method is not allowed" });
   try {
     //extracting fields and files from form data
-    const { fields, files } = await getFormData(req);
+    const { fields, files } = await getFormData(req, res);
 
     // Extract the uploaded file from the form data
     const myFile = files.picture as formidable.File[];
