@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { v2 as cloudinary } from "cloudinary";
 import formidable from "formidable";
-import { prisma } from "@/utilis/db";
+import { prisma } from "@/utils/db";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
