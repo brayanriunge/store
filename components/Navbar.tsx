@@ -38,6 +38,9 @@ export default function Navbar() {
                     </span>
                   </a>
                 </Link>
+                <Link legacyBehavior href={"/dashboard"}>
+                  <a className="text-lg">Dashboard</a>
+                </Link>
 
                 <Link legacyBehavior href={"/contactus"}>
                   <a className="text-lg">Contact Us</a>

@@ -55,13 +55,13 @@ export default function Dashboard() {
     const formData = new FormData();
     formData.append("product", JSON.stringify(product));
     if (selectedFile) formData.append("picture", selectedFile);
-
+    console.log("before fetch");
     try {
       const res = await fetch("http://localhost:3000/api/Admin/register", {
         method: "POST",
-
         body: formData,
       });
+      console.log("after fetch");
       console.log(res);
       if (res.ok) {
         router.push("/");
@@ -70,6 +70,8 @@ export default function Dashboard() {
       }
     } catch (error) {
       return console.log("Error", error);
+    } finally {
+      setIsUploading(false);
     }
   };
   return (
@@ -184,7 +186,7 @@ export default function Dashboard() {
                     width={280}
                     height={280}
                     alt="selectedImage"
-                    className="text-gray-500"
+                    className="text-gray-500 mb-4 rounded-md"
                   />
                 ) : (
                   <div className="flex flex-col items-center justify-between pt-6 mt-5">
