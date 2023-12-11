@@ -190,7 +190,7 @@ export default function Dashboard() {
             </div>
             {/* image */}
             <div className="flex flex-col items-center p-5 mr-4">
-              {/* <label htmlFor="dropzone-file">
+              <label htmlFor="dropzone-file">
                 {selectedImage ? (
                   <Image
                     src={selectedImage}
@@ -220,7 +220,7 @@ export default function Dashboard() {
                     onChange={handleFileUploadChange}
                   />
                 </div>
-              </label> */}
+              </label>
 
               <button
                 className="rounded-xl px-10 py-2 bg-orange-400 mt-10 "
