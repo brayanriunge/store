@@ -60,8 +60,8 @@ export default async function handler(
         category,
         description,
         name,
-        price,
-        quantity,
+        price: parseInt(price),
+        quantity: parseInt(quantity),
       },
     });
     console.log(newProduct);
