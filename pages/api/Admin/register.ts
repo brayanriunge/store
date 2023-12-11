@@ -48,6 +48,7 @@ export default async function handler(
     return res.status(405).json({ message: "The method is not allowed" });
   try {
     const { brand, category, description, name, price, quantity } = req.body;
+    console.log(req.body);
     // checking if any field is missing
     if (!description || !brand || !name || !quantity || !price || !category)
       return res.status(400).json({ message: "missing required fields" });

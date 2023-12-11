@@ -59,7 +59,17 @@ export default function Dashboard() {
     try {
       const res = await fetch("http://localhost:3000/api/Admin/register", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          brand,
+          category,
+          description,
+          name,
+          price,
+          quantity,
+        }),
       });
       console.log("after fetch");
       console.log(res);
@@ -154,6 +164,7 @@ export default function Dashboard() {
                   id="description"
                   required
                   className="rounded-xl px-6 py-5 focus:outline-none border-none"
+                  {...register("description")}
                 />
                 {errors.description?.message && (
                   <span className="text-sm text-red-500">
