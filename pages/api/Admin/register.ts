@@ -47,35 +47,20 @@ export default async function handler(
   if (req.method !== "POST")
     return res.status(405).json({ message: "The method is not allowed" });
   try {
-    //extracting fields and files from form data
-    const { fields, files } = await getFormData(req, res);
-
-    // Extract the uploaded file from the form data
-    const myFile = files.picture as formidable.File[];
-    const file = myFile[0];
-
-    //uploading image to cloudinary
-    const uploadImage = await cloudinary.uploader.upload(file.filepath);
-    if (!uploadImage)
-      return res.status(500).json({ message: "failed to upload image" });
-
-    //extracting fields
-    const { description, brand, name, quantity, price, category } = fields;
-
-    //checking if any field is missing
+    const { brand, category, description, name, price, quantity } = req.body;
+    // checking if any field is missing
     if (!description || !brand || !name || !quantity || !price || !category)
       return res.status(400).json({ message: "missing required fields" });
 
     //creating a new product
     const newProduct = await prisma.product.create({
       data: {
-        brand: brand as unknown as string,
-        category: category as unknown as string,
-        description: description as unknown as string,
-        imgUrl: uploadImage.secure_url,
-        name: name as unknown as string,
-        price: parseInt(price as unknown as string),
-        quantity: parseInt(quantity as unknown as string),
+        brand,
+        category,
+        description,
+        name,
+        price,
+        quantity,
       },
     });
     console.log(newProduct);
@@ -86,6 +71,30 @@ export default async function handler(
     }
   } catch (error) {
     console.log(error);
+    // Handle specific Prisma validation errors
+    if (error === "P2025") {
+      return res
+        .status(400)
+        .json({ message: "Invalid data for creating a product" });
+    }
     return res.status(500).json({ message: "Internal server error" });
   }
 }
+//extracting fields and files from form data
+// const { fields, files } = await getFormData(req, res);
+
+// Extract the uploaded file from the form data
+// const myFile = files.picture as formidable.File[];
+// const file = myFile[0];
+
+//uploading image to cloudinary
+// const uploadImage = await cloudinary.uploader.upload(file.filepath);
+// if (!uploadImage)
+//   return res.status(500).json({ message: "failed to upload image" });
+
+//extracting fields
+// const { description, brand, name, quantity, price, category } = fields;
+
+//checking if any field is missing
+// if (!description || !brand || !name || !quantity || !price || !category)
+//   return res.status(400).json({ message: "missing required fields" });

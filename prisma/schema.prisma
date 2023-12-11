@@ -17,6 +17,6 @@ model Product{
  category String
  quantity Int
  description String
- imgUrl String
+
  createdAt DateTime @default(now())
 }

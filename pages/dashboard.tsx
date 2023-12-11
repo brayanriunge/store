@@ -53,8 +53,8 @@ export default function Dashboard() {
     };
     //creating formData to send to the server
     const formData = new FormData();
-    formData.append("product", JSON.stringify(product));
-    if (selectedFile) formData.append("picture", selectedFile);
+    // formData.append("product", JSON.stringify(product));
+    // if (selectedFile) formData.append("picture", selectedFile);
     console.log("before fetch");
     try {
       const res = await fetch("http://localhost:3000/api/Admin/register", {
