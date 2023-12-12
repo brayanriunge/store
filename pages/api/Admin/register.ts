@@ -17,7 +17,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const config = {
+export const config = {
   api: {
     bodyParser: false,
   },
@@ -65,13 +65,17 @@ export default async function handler(
     const myFile = files.image as formidable.File[];
     const file = myFile[0];
 
-    //uploading image to cloudinary
+    // uploading image to cloudinary
     const uploadImage = await cloudinary.uploader.upload(file.filepath);
     if (!uploadImage)
       return res.status(500).json({ message: "failed to upload image" });
 
+    // const uploadPath = "@/public/upload";
+    // require("fs").renameSync(file.filepath, uploadPath);
+
     //extracting fields
     const { description, brand, name, quantity, price, category } = fields;
+    console.log(fields);
 
     //checking if any field is missing
     if (!description || !brand || !name || !quantity || !price || !category)
@@ -90,16 +94,16 @@ export default async function handler(
     });
     console.log(newProduct);
     if (!newProduct) {
-      return res.status(401).json({ message: "Failed to created product" });
+      return res.status(500).json({ message: "Failed to created product" });
     } else {
-      return res.status(200).json({ message: "Product created successfully" });
+      return res.status(201).json({ message: "Product created successfully" });
     }
   } catch (error) {
     console.log(error);
     // Handle specific Prisma validation errors
     if (error === "P2025") {
       return res
-        .status(400)
+        .status(500)
         .json({ message: "Invalid data for creating a product" });
     }
     return res.status(500).json({ message: "Internal server error" });

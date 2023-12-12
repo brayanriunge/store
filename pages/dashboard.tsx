@@ -59,17 +59,8 @@ export default function Dashboard() {
     try {
       const res = await fetch("http://localhost:3000/api/Admin/register", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          brand,
-          category,
-          description,
-          name,
-          price,
-          quantity,
-        }),
+
+        body: formData,
       });
       console.log("after fetch");
       console.log(res);
