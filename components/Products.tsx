@@ -6,6 +6,7 @@ export interface ProductsData {
   quantity: number;
   description: string;
   category: string;
+  imgUrl: string;
 }
 
 export default function Products() {
@@ -16,5 +17,20 @@ export default function Products() {
     console.log(data);
     setProducts(await data);
   };
-  return <div></div>;
+  return (
+    <div>
+      <p>products:</p>
+      {products.map((product) => (
+        <div>
+          {product.brand}
+          <div>
+            {product.name}
+            {product.description}
+            {product.category}
+            {product.quantity}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
