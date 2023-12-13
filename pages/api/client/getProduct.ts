@@ -15,6 +15,7 @@ export default async function handler(
       },
     });
     console.log(data);
+    res.status(200).json(data);
     if (data)
       return res.status(201).json({ message: "products fetched successful" });
   } catch (error) {
