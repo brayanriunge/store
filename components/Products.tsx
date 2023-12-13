@@ -27,6 +27,7 @@ export default function Products() {
       {products.map((product) => (
         <>
           <div>
+            <Image src={product.imgUrl} alt="image" height={240} width={240} />
             {product.brand}
             <div>
               {product.name}
@@ -34,7 +35,6 @@ export default function Products() {
               {product.category}
               {product.quantity}
             </div>
-            <Image src={product.imgUrl} alt="image" height={240} width={240} />
           </div>
         </>
       ))}
