@@ -24,17 +24,16 @@ export default function Products() {
   }, []);
   return (
     <section className="grid grid-cols-4 gap-4 mt-32">
-      <p>products:</p>
       {products.map((product) => (
         <>
           <div className=" flex flex-col  justify-between gap-2 items-start rounded-md shadow-sm  px-5">
-            <div className=" w-full">
+            <div className=" w-full h-64 block rounded">
               <Image
                 src={product.imgUrl}
                 alt="image"
-                height={100}
-                width={100}
                 className="object-cover block object-center h-full width-full"
+                width={290}
+                height={70}
               />
             </div>
 
