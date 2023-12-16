@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 
 export interface ProductsData {
   name: string;
@@ -23,11 +24,11 @@ export default function Products() {
     fetchProducts();
   }, []);
   return (
-    <section className="grid grid-cols-4 gap-4 mt-32">
+    <section className="grid grid-cols-4 gap-6 pt-32 p-5">
       {products.map((product) => (
         <>
-          <div className=" flex flex-col  justify-between gap-2 items-start rounded-md shadow-sm  px-5">
-            <div className=" w-full h-64 block rounded">
+          <div className=" flex flex-col bg-white justify-between gap-2  rounded-md shadow-sm  px-5">
+            <div className=" w-full h-64 block rounded-md">
               <Image
                 src={product.imgUrl}
                 alt="image"
@@ -45,15 +46,14 @@ export default function Products() {
               <h1 className="text-bold text-lg ">Brand:</h1>
               <p className="text-md">{product.brand}</p>
             </div>
-            <div
-              className="flex items-start
-             justify-between gap-4"
-            >
-              <h1 className="text-bold text-lg ">Description:</h1>
+            <div className="flex justify-between gap-4">
+              <h1 className="text-bold text-lg items-start flex">
+                Description:
+              </h1>
               <p className="text-md">{product.description.slice(0, 20)}...</p>
             </div>
-            <div className="flex items-start justify-between gap-4">
-              <h1 className="text-bold text-lg ">Price:</h1>
+            <div className="flex  justify-between gap-4">
+              <h1 className="text-bold text-lg items-start flex ">Price:</h1>
               <p className="text-md">
                 {" "}
                 <span>KSH</span>

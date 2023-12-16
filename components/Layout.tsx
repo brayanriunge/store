@@ -5,7 +5,7 @@ type prop = {
 };
 export default function Layout({ children }: prop) {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-slate-300">
       <Navbar />
       {children}
     </div>
