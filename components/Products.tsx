@@ -23,19 +23,21 @@ export default function Products() {
     fetchProducts();
   }, []);
   return (
-    <section className="grid grid-cols-4">
+    <section className="grid grid-cols-4 gap-4 mt-32">
       <p>products:</p>
       {products.map((product) => (
         <>
-          <div className=" flex flex-col items-center justify content-between gap-8 rounded-md shadow-sm">
-            <div className="rounded-md">
+          <div className=" flex flex-col  justify-between gap-2 items-start rounded-md shadow-sm  px-5">
+            <div className=" w-full">
               <Image
                 src={product.imgUrl}
                 alt="image"
-                height={240}
-                width={240}
+                height={100}
+                width={100}
+                className="object-cover block object-center h-full width-full"
               />
             </div>
+
             <div className="flex items-start justify-between gap-4">
               <h1 className="text-bold text-lg ">Name:</h1>
               <p className="text-md">{product.name}</p>
@@ -49,7 +51,7 @@ export default function Products() {
              justify-between gap-4"
             >
               <h1 className="text-bold text-lg ">Description:</h1>
-              <p className="text-md">{product.description}</p>
+              <p className="text-md">{product.description.slice(0, 20)}...</p>
             </div>
             <div className="flex items-start justify-between gap-4">
               <h1 className="text-bold text-lg ">Price:</h1>
