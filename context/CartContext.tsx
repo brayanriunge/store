@@ -1,8 +1,8 @@
-import { createContext } from "react";
+import { ReactNode, createContext } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
 type AddProp = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 type cartItem = {
@@ -19,8 +19,9 @@ export default function CartProvider({ children }: AddProp) {
   const [selectedProduct, setSelectedProduct] = useLocalStorageState<
     cartItem[]
   >("cart", { defaultValue: [] });
-  return;
-  <CartContext.Provider value={{ selectedProduct, setSelectedProduct }}>
-    {children}
-  </CartContext.Provider>;
+  return (
+    <CartContext.Provider value={{ selectedProduct, setSelectedProduct }}>
+      {children}
+    </CartContext.Provider>
+  );
 }
