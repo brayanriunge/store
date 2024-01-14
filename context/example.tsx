@@ -46,13 +46,13 @@ import {
     useEffect(() => {
       // Calculate the cartQuantity after the component has mounted on the client side
       setCartQuantity(
-        cartItems.reduce((total, item) => total + item.quantity, 0)
+        cartItems.reduce((total: any, item: { quantity: any; }) => total + item.quantity, 0)
       );
     }, [cartItems]);
   
     // Function to add an item to the cart or increase its quantity
     function addToCart(id: string) {
-      setCartItems((currentItems) => {
+      setCartItems((currentItems: any) => {
         if (currentItems.find((item) => item.id === id) == null) {
           // If the item is not in the cart, add it with a quantity of 1
           return [...currentItems, { id, quantity: 1 }];
