@@ -9,11 +9,11 @@ export default async function handler(
     res.status(401).json({ message: "Method not found" });
   }
   try {
-    const productId = req.query.slug as string;
+    const { id } = req.query;
 
     const data = await prisma.product.findUnique({
       where: {
-        id: productId,
+        id: id as string,
       },
     });
     console.log(data);

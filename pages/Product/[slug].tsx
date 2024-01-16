@@ -6,7 +6,7 @@ import { useState } from "react";
 Image;
 
 export default async function productSpecific() {
-  const [items, setItems] = useState<ProductsData[]>([]);
+  const [items, setItems] = useState<ProductsData>();
   const router = useRouter();
   const { slug } = router.query;
   const response = await fetch(`http://localhost:3000/api/client/${slug}`);
@@ -17,7 +17,7 @@ export default async function productSpecific() {
     <Layout>
       <section className="p-5">
         {items &&
-          items.map((item) => (
+          items.map(({ item }: any) => (
             <>
               <div className="flex flex-col">
                 <div className="w-full">
