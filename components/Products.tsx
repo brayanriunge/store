@@ -14,7 +14,7 @@ export interface ProductsData {
   price: number;
 }
 
-export default function Products({ slug }: any) {
+export default function Products(id: any) {
   const [products, setProducts] = useState<ProductsData[]>([]);
   const fetchProducts = async () => {
     const res = fetch("http://localhost:3000/api/client/getProduct");
@@ -31,7 +31,7 @@ export default function Products({ slug }: any) {
         <>
           <div className=" flex flex-col bg-white justify-between gap-2  rounded-md shadow-sm  px-5">
             <div className=" w-full h-64 block rounded-md">
-              <Link href={`/Product/${slug}`}>
+              <Link href={`/Product/${id}`}>
                 <Image
                   src={product.imgUrl}
                   alt="image"
