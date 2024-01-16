@@ -16,25 +16,31 @@ export default async function productSpecific() {
   return (
     <Layout>
       <section className="p-5">
-        {items.map((item) => (
-          <>
-            <div className="flex flex-col">
-              <div className="w-full">
-                <Image src={item.imgUrl} height={340} width={290} alt="image" />
-              </div>
-              <div className="flex flex-row ">
-                <h1 className="text-2xl text-bold text-blue-400 ">
-                  Name:{item.name}
-                </h1>
+        {items &&
+          items.map((item) => (
+            <>
+              <div className="flex flex-col">
+                <div className="w-full">
+                  <Image
+                    src={item.imgUrl}
+                    height={340}
+                    width={290}
+                    alt="image"
+                  />
+                </div>
+                <div className="flex flex-row ">
+                  <h1 className="text-2xl text-bold text-blue-400 ">
+                    Name:{item.name}
+                  </h1>
 
-                <p className="justify-content text-sm">{item.description}</p>
-                <p className="text-bold">Brand:{item.brand}</p>
-                <p className="text-blue-400">Price:{item.price}</p>
-                <p className="text-blue-400">Quantity: {item.quantity}</p>
+                  <p className="justify-content text-sm">{item.description}</p>
+                  <p className="text-bold">Brand:{item.brand}</p>
+                  <p className="text-blue-400">Price:{item.price}</p>
+                  <p className="text-blue-400">Quantity: {item.quantity}</p>
+                </div>
               </div>
-            </div>
-          </>
-        ))}
+            </>
+          ))}
       </section>
     </Layout>
   );

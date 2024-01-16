@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
 export interface ProductsData {
+  [x: string]: any;
   id: string;
   name: string;
   brand: string;
