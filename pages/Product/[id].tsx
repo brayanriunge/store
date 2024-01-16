@@ -8,8 +8,8 @@ Image;
 export default async function productSpecific() {
   const [items, setItems] = useState<ProductsData>();
   const router = useRouter();
-  const { slug } = router.query;
-  const response = await fetch(`http://localhost:3000/api/client/${slug}`);
+  const { id } = router.query;
+  const response = await fetch(`http://localhost:3000/api/client/${id}`);
   const data = await response.json();
   console.log(data);
   setItems(data);
