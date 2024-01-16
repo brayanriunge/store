@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 
 export interface ProductsData {
+  id: string;
   name: string;
   brand: string;
   quantity: number;
@@ -12,7 +14,7 @@ export interface ProductsData {
   price: number;
 }
 
-export default function Products() {
+export default function Products({ slug }: any) {
   const [products, setProducts] = useState<ProductsData[]>([]);
   const fetchProducts = async () => {
     const res = fetch("http://localhost:3000/api/client/getProduct");
@@ -29,13 +31,15 @@ export default function Products() {
         <>
           <div className=" flex flex-col bg-white justify-between gap-2  rounded-md shadow-sm  px-5">
             <div className=" w-full h-64 block rounded-md">
-              <Image
-                src={product.imgUrl}
-                alt="image"
-                className="object-cover block object-center h-full width-full"
-                width={290}
-                height={70}
-              />
+              <Link href={`/Product/${slug}`}>
+                <Image
+                  src={product.imgUrl}
+                  alt="image"
+                  className="object-cover block object-center h-full width-full"
+                  width={290}
+                  height={70}
+                />
+              </Link>
             </div>
 
             <div className="flex items-start justify-between gap-4">
