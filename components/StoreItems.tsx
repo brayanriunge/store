@@ -6,7 +6,7 @@ export default function StoreItem({
   id,
   name,
   brand,
-  category,
+
   description,
   imgUrl,
   price,
@@ -30,6 +30,7 @@ export default function StoreItem({
         <h1 className="text-bold text-lg ">Name:</h1>
         <p className="text-md">{name}</p>
       </div>
+
       <div className="flex items-start justify-between gap-4">
         <h1 className="text-bold text-lg ">Brand:</h1>
         <p className="text-md">{brand}</p>
@@ -45,6 +46,15 @@ export default function StoreItem({
           <span>KSH</span>
           {""}
           {price}
+        </p>
+      </div>
+      <div className="flex  justify-between gap-4">
+        <h1 className="text-bold text-lg items-start flex ">Price:</h1>
+        <p className="text-md">
+          {" "}
+          <span>Quantity</span>
+          {""}
+          {quantity}
         </p>
       </div>
     </div>
