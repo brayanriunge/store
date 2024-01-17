@@ -31,19 +31,19 @@ export default function productSpecific() {
 
   return (
     <Layout>
-      <section className="p-5">
+      <section className="p-5 mt-5">
         <>
-          <div className="flex width-full flex-row gap-4">
+          <div className="md:flex width-full flex-row gap-4">
             <div className="w-full">
               <Image
                 src={items?.imgUrl as string}
-                height={340}
-                width={290}
+                height={200}
+                width={240}
                 alt="image"
-                className="h-70 w-full rounded object-cover object-center"
+                className="h-60 w-full rounded object-cover object-center lg:h-auto lg:w-1/2"
               />
             </div>
-            <div className="flex flex-col mt-16 flex-start  w-full lg:w-1/2 lg:py-6 lg:pl-10 ">
+            <div className="flex flex-col mt-16  w-full lg:w-1/2 lg:py-6 lg:pl-10 ">
               <h1 className="text-2xl text-bold text-blue-400 ">
                 Name:{items?.name}
               </h1>
