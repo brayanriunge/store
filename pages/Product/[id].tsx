@@ -1,23 +1,24 @@
 import Layout from "@/components/Layout";
 import { ProductsData } from "@/types/ProductType";
-
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function productSpecific() {
-  const [items, setItems] = useState<ProductsData | null>(null);
+  const [items, setItems] = useState<ProductsData>();
   const router = useRouter();
   const { id } = router.query;
-  const fetchProduct = async () => {
-    const response = await fetch(`http://localhost:3000/api/client/${id}`);
-    const data = await response.json();
-    console.log(data);
-    setItems(data);
-  };
 
   useEffect(() => {
-    fetchProduct();
+    if (id) {
+      const fetchProduct = async () => {
+        const response = await fetch(`http://localhost:3000/api/client/${id}`);
+        const data = await response.json();
+        console.log(data);
+        setItems(await data);
+      };
+      fetchProduct();
+    }
   }, [id]);
 
   return (
