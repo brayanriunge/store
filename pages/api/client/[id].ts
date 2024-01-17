@@ -11,13 +11,13 @@ export default async function handler(
   try {
     const { id } = req.query;
 
-    const data = await prisma.product.findUnique({
+    const product = await prisma.product.findUnique({
       where: {
         id: id as string,
       },
     });
-    console.log(data);
-    res.status(200).json({ message: "product found" });
+    console.log(product);
+    res.status(200).json(product);
   } catch (error) {
     console.log(error);
   }

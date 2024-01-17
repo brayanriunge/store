@@ -5,21 +5,29 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function productSpecific() {
-  const [items, setItems] = useState<ProductsData>();
+  const [items, setItems] = useState<ProductsData | null>(null);
   const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
     if (id) {
       const fetchProduct = async () => {
-        const response = await fetch(`http://localhost:3000/api/client/${id}`);
-        const data = await response.json();
-        console.log(data);
-        setItems(await data);
+        try {
+          const response = await fetch(
+            `http://localhost:3000/api/client/${id}`
+          );
+          console.log("Response", response);
+          const res = await response.json();
+          console.log("Response", res);
+          setItems(res);
+        } catch (error) {
+          console.log("error fetching item", error);
+        }
       };
       fetchProduct();
     }
   }, [id]);
+  console.log(items);
 
   return (
     <Layout>
