@@ -1,18 +1,25 @@
 import Layout from "@/components/Layout";
-import { ProductsData } from "@/components/Products";
+import { ProductsData } from "@/types/ProductType";
+
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
-Image;
+import { useEffect, useState } from "react";
 
-export default async function productSpecific() {
+export default function productSpecific() {
   const [items, setItems] = useState<ProductsData | null>(null);
   const router = useRouter();
   const { id } = router.query;
-  const response = await fetch(`http://localhost:3000/api/client/${id}`);
-  const data = await response.json();
-  console.log(data);
-  setItems(data);
+  const fetchProduct = async () => {
+    const response = await fetch(`http://localhost:3000/api/client/${id}`);
+    const data = await response.json();
+    console.log(data);
+    setItems(data);
+  };
+
+  useEffect(() => {
+    fetchProduct();
+  }, [id]);
+
   return (
     <Layout>
       <section className="p-5">
