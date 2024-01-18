@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export default function Navbar() {
   const flexBetween = "flex justify-between items-center";
-  const isAboveMediaScreens = useMediaQuery("(min-width: 1060px)");
+  const isAboveMediaScreens = useMediaQuery("(min-width: 720px)");
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   return (
     <div
