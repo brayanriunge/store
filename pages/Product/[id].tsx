@@ -33,15 +33,14 @@ export default function productSpecific() {
     <section className="p-5 pt-28">
       <>
         <div className="md:flex items-center justify-between flex-row gap-4">
-          <div className="w-1/2 flex items-center p-10 ">
-            <Image
-              src={items?.imgUrl as string}
-              height={200}
-              width={240}
-              alt="image"
-              className="h-50  rounded object-cover object-center lg:h-auto lg:w-1/2"
-            />
-          </div>
+          <Image
+            src={items?.imgUrl as string}
+            height={100}
+            width={140}
+            alt="image"
+            className="  rounded-md object-cover object-center  w-1/2"
+          />
+
           <div className="flex flex-col  w-full lg:w-1/2 lg:py-6 lg:pl-10 ">
             <h1 className="text-2xl text-bold text-blue-700 m-2 ">
               Name: <span className="font-bold text-black"> {items?.name}</span>
