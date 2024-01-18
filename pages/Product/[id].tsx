@@ -30,32 +30,30 @@ export default function productSpecific() {
   console.log(items);
 
   return (
-    <Layout>
-      <section className="p-5 mt-5">
-        <>
-          <div className="md:flex width-full flex-row gap-4">
-            <div className="w-full">
-              <Image
-                src={items?.imgUrl as string}
-                height={200}
-                width={240}
-                alt="image"
-                className="h-60 w-full rounded object-cover object-center lg:h-auto lg:w-1/2"
-              />
-            </div>
-            <div className="flex flex-col mt-16  w-full lg:w-1/2 lg:py-6 lg:pl-10 ">
-              <h1 className="text-2xl text-bold text-blue-400 ">
-                Name:{items?.name}
-              </h1>
-
-              <p className="justify-content text-sm">{items?.description}</p>
-              <p className="text-bold">Brand:{items?.brand}</p>
-              <p className="text-blue-400">Price:{items?.price}</p>
-              <p className="text-blue-400">Quantity: {items?.quantity}</p>
-            </div>
+    <section className="p-5 pt-28">
+      <>
+        <div className="md:flex items-center justify-between width-full flex-row gap-4">
+          <div className="w-full flex items-center p-10 ">
+            <Image
+              src={items?.imgUrl as string}
+              height={200}
+              width={240}
+              alt="image"
+              className="h-50 w-full rounded object-cover object-center lg:h-auto lg:w-1/2"
+            />
           </div>
-        </>
-      </section>
-    </Layout>
+          <div className="flex flex-col mx-auto p-10 w-full lg:w-1/2 lg:py-6 lg:pl-10 ">
+            <h1 className="text-3xl text-bold text-blue-400 ">
+              Name: <span className="font-bold text-black"> {items?.name}</span>
+            </h1>
+
+            <p className="justify-content text-3xl">{items?.description}</p>
+            <p className="text-bold">Brand:{items?.brand}</p>
+            <p className="text-blue-400">Price:{items?.price}</p>
+            <p className="text-blue-400">Quantity: {items?.quantity}</p>
+          </div>
+        </div>
+      </>
+    </section>
   );
 }
