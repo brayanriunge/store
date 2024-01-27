@@ -1,6 +1,7 @@
 import { useCart } from "@/context/CartContext";
 import { ProductsData } from "@/types/ProductType";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 type cartItemProp = {
@@ -11,14 +12,24 @@ type cartItemProp = {
 export default function cartItem({ id, quantity }: cartItemProp) {
   const { addToCart, removeFromCart, decreaseCartItem } = useCart();
   const [item, setItem] = useState<ProductsData | null>(null);
-  const fetchProduct = async () => {
-    const res = await fetch(`http://localhost:3000/api/client/${id}`);
-    const productItem = res.json();
-    setItem(await productItem);
-  };
+  const router = useRouter();
+
   useEffect(() => {
-    fetchProduct();
-  }, []);
+    if (id) {
+      try {
+        const fetching = async () => {
+          const productId = await fetch(
+            `http://localhost:3000/api/client/${id}`
+          );
+          const res = await productId.json();
+          setItem(res);
+          console.log(res);
+        };
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, [id]);
 
   return (
     <section className="flex flex-col items-center justify-between gap-2">
