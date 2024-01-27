@@ -22,6 +22,7 @@ type CartContextType = {
   getItemQuantity: (id: string) => void;
   addCartQuantity: (id: string) => void;
   removeFromCart: (id: string) => void;
+  decreaseCartItem: (id: string) => void;
 };
 //creating context
 const CartContext = createContext({} as CartContextType);
@@ -82,6 +83,23 @@ export default function CartProvider({ children }: AddProp) {
     });
   }
 
+  //function to decrease cart quantity
+  function decreaseCartItem(id: string) {
+    setCartItem((currentItems) => {
+      return currentItems.map((item) => {
+        if (item.id === id) {
+          const newQuantity = item.quantity - 1;
+          return {
+            ...item,
+            quantity: newQuantity >= 1 ? newQuantity : item.quantity,
+          };
+        } else {
+          return item;
+        }
+      });
+    });
+  }
+
   //function to remove an item from cart
   function removeFromCart(id: string) {
     setCartItem((currentItems) => {
@@ -99,6 +117,7 @@ export default function CartProvider({ children }: AddProp) {
         getItemQuantity,
         addCartQuantity,
         removeFromCart,
+        decreaseCartItem,
       }}
     >
       {children}
