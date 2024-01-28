@@ -17,7 +17,7 @@ export default function cartItem({ id, quantity }: cartItemProp) {
   useEffect(() => {
     if (id) {
       try {
-        const fetching = async () => {
+        const fetchProduct = async () => {
           const productId = await fetch(
             `http://localhost:3000/api/client/${id}`
           );
@@ -28,6 +28,7 @@ export default function cartItem({ id, quantity }: cartItemProp) {
       } catch (error) {
         console.log(error);
       }
+      //fix here
     }
   }, [id]);
 
