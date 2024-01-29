@@ -75,9 +75,12 @@ export default function productSpecific() {
               </span>
             </p>
             {quantity > 0 ? (
-              <button>Add to Cart</button>
+              <button className="p-4 m-4 rounded-md">Add to Cart</button>
             ) : (
-              <button onClick={() => addToCart(items?.id as string)}>
+              <button
+                onClick={() => addToCart(items?.id as string)}
+                className="rounded-md focus:bg-orange-300"
+              >
                 Add to cart
               </button>
             )}
