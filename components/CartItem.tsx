@@ -12,24 +12,17 @@ type cartItemProp = {
 export default function cartItem({ id, quantity }: cartItemProp) {
   const { addToCart, removeFromCart, decreaseCartItem } = useCart();
   const [item, setItem] = useState<ProductsData | null>(null);
-  const router = useRouter();
+
+  const fetchItem = async () => {
+    const productId = await fetch(`http://localhost:3000/api/client/${id}`);
+    console.log("Response");
+    const res = await productId.json();
+    setItem(res);
+    console.log(res);
+  };
 
   useEffect(() => {
-    if (id) {
-      try {
-        const fetchProduct = async () => {
-          const productId = await fetch(
-            `http://localhost:3000/api/client/${id}`
-          );
-          const res = await productId.json();
-          setItem(res);
-          console.log(res);
-        };
-      } catch (error) {
-        console.log(error);
-      }
-      //fix here
-    }
+    fetchItem();
   }, [id]);
 
   return (
