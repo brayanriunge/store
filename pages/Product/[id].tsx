@@ -30,7 +30,7 @@ export default function productSpecific() {
     }
   }, [id]);
 
-  const quantity = getItemQuantity(items?.id);
+  const quantity = getItemQuantity(items?.id as string);
 
   return (
     <section className="p-5 pt-28">
@@ -75,11 +75,13 @@ export default function productSpecific() {
               </span>
             </p>
             {quantity > 0 ? (
-              <button className="p-4 m-4 rounded-md">Add to Cart</button>
+              <button className="p-4 m-4 rounded-md bg-orange-500 ">
+                Add to Cart
+              </button>
             ) : (
               <button
                 onClick={() => addToCart(items?.id as string)}
-                className="rounded-md focus:bg-orange-300"
+                className="rounded-md focus:ring-4 focus:ring-purple-300"
               >
                 Add to cart
               </button>
