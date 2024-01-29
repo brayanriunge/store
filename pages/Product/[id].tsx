@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { useCart } from "@/context/CartContext";
 import { ProductsData } from "@/types/ProductType";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -6,6 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function productSpecific() {
   const [items, setItems] = useState<ProductsData | null>(null);
+  const { getItemQuantity, addToCart } = useCart();
   const router = useRouter();
   const { id } = router.query;
 
@@ -27,7 +29,8 @@ export default function productSpecific() {
       fetchProduct();
     }
   }, [id]);
-  console.log(items);
+
+  const quantity = getItemQuantity(items?.id);
 
   return (
     <section className="p-5 pt-28">
@@ -71,6 +74,13 @@ export default function productSpecific() {
                 {items?.quantity}
               </span>
             </p>
+            {quantity > 0 ? (
+              <button>Add to Cart</button>
+            ) : (
+              <button onClick={() => addToCart(items?.id as string)}>
+                Add to cart
+              </button>
+            )}
           </div>
         </div>
       </>
