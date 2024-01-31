@@ -39,12 +39,21 @@ export default function cartItem({ id, quantity }: cartItemProp) {
             />
           </div>
           <div className="text-bold text-lg ">{item.brand}</div>
-          <div className=" inline-flex border-4  ">
-            <button className="" onClick={() => addToCart(item.id)}>
+          <div className=" inline-flex border-4 border-gray-700 ">
+            <button
+              className=" px-5 py-2.5 font-medium "
+              onClick={() => addToCart(item.id)}
+            >
               <HiOutlinePlus />
             </button>
-            {quantity}
-            <button onClick={() => decreaseCartItem(item.id)}>
+            <div className="px-5 py-2.5 font-medium font-gray-900">
+              {quantity}
+            </div>
+
+            <button
+              className="px-5 py-2.5 font-medium "
+              onClick={() => decreaseCartItem(item.id)}
+            >
               <HiOutlineMinus />
             </button>
           </div>
