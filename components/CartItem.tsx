@@ -27,7 +27,7 @@ export default function cartItem({ id, quantity }: cartItemProp) {
   }, [id]);
 
   return (
-    <section className="flex flex-row items-center justify-between gap-5 mt-10">
+    <section className=" m-5 p-5 w-full flex flex-row items-center justify-between gap-5 mt-10">
       {item && (
         <>
           <div className="rounded-md mt-6">
