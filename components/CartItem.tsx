@@ -27,9 +27,9 @@ export default function cartItem({ id, quantity }: cartItemProp) {
   }, [id]);
 
   return (
-    <section className=" m-5 p-5 w-full flex flex-row items-center justify-between gap-5 mt-10">
+    <section>
       {item && (
-        <>
+        <section className=" m-5 p-5 w-full flex flex-row-5 items-center justify-between gap-5 mt-10">
           <div className="rounded-md mt-6">
             <Image
               src={item?.imgUrl as string}
@@ -57,15 +57,20 @@ export default function cartItem({ id, quantity }: cartItemProp) {
               <HiOutlineMinus />
             </button>
           </div>
+          <div className="flex">
+            <h1 className="text-md px-4">
+              Price: <span> {item.price * quantity}</span>
+            </h1>
+          </div>
           <div className="text-md">
             <button
               onClick={() => removeFromCart(id)}
-              className="text-red-300 hover:underline"
+              className="text-red-600 hover:underline"
             >
               Remove
             </button>
           </div>
-        </>
+        </section>
       )}
     </section>
   );
