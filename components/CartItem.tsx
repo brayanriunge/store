@@ -57,6 +57,14 @@ export default function cartItem({ id, quantity }: cartItemProp) {
               <HiOutlineMinus />
             </button>
           </div>
+          <div className="text-md">
+            <button
+              onClick={() => removeFromCart(id)}
+              className="text-red-300 hover:underline"
+            >
+              Remove
+            </button>
+          </div>
         </>
       )}
     </section>
