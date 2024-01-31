@@ -74,7 +74,7 @@ export default function productSpecific() {
                 {items?.quantity}
               </span>
             </p>
-            {quantity > 0 ? (
+            {quantity !== undefined && quantity > 0 ? (
               <button className="p-4 m-4 rounded-md bg-orange-500 hover:bg-yellow-700 ">
                 Add to Cart
               </button>
