@@ -3,6 +3,7 @@ import { ProductsData } from "@/types/ProductType";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi";
 
 type cartItemProp = {
   id: string;
@@ -38,6 +39,15 @@ export default function cartItem({ id, quantity }: cartItemProp) {
             />
           </div>
           <div className="text-bold text-lg ">{item.brand}</div>
+          <div className=" inline-flex border-4  ">
+            <button className="" onClick={() => addToCart(item.id)}>
+              <HiOutlinePlus />
+            </button>
+            {quantity}
+            <button onClick={() => decreaseCartItem(item.id)}>
+              <HiOutlineMinus />
+            </button>
+          </div>
         </>
       )}
     </section>
