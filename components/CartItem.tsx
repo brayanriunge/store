@@ -26,15 +26,17 @@ export default function cartItem({ id, quantity }: cartItemProp) {
   }, [id]);
 
   return (
-    <section className="flex flex-col items-center justify-between gap-2">
-      <div>
-        <Image
-          src={item?.imgUrl as string}
-          alt="product"
-          height={60}
-          width={60}
-        />
-      </div>
+    <section className="flex flex-col items-center justify-between gap-2 mt-10">
+      {item && (
+        <div className="rounded-md mt-6">
+          <Image
+            src={item?.imgUrl as string}
+            alt={item?.name as string}
+            height={60}
+            width={60}
+          />
+        </div>
+      )}
     </section>
   );
 }

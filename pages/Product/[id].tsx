@@ -4,6 +4,7 @@ import { ProductsData } from "@/types/ProductType";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default function productSpecific() {
   const [items, setItems] = useState<ProductsData | null>(null);
@@ -83,6 +84,7 @@ export default function productSpecific() {
                 onClick={() => addToCart(items?.id as string)}
                 className="rounded-md focus:ring-4 focus:ring-purple-300"
               >
+                <FaShoppingCart />
                 Add to cart
               </button>
             )}
