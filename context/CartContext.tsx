@@ -29,19 +29,24 @@ const CartContext = createContext({} as CartContextType);
 
 //custom hook to access CartContext
 export function useCart() {
-  return useContext(CartContext);
+  const context = useContext(CartContext);
+  console.log("context for cart:", context);
+  return context;
 }
 
 export default function CartProvider({ children }: AddProp) {
   const [cartItem, setCartItem] = useLocalStorageState<CartItem[]>("cart", {
     defaultValue: [],
   });
+  console.log("CartProvider - cartItems:", cartItem);
   const [cartQuantity, setCartQuantity] = useState<number>(0);
 
   // Effect to recalculate cart quantity when cart items change
   useEffect(() => {
     setCartQuantity(cartItem.reduce((total, item) => total + item.quantity, 0));
   }, [cartItem]);
+
+  console.log("CartProvider - cartQuantity:", cartQuantity);
 
   //function to add items to a cart and also its quantity
   function addToCart(id: string) {
