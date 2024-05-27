@@ -2,8 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { v2 as cloudinary } from "cloudinary";
 import formidable from "formidable";
 import { prisma } from "@/utils/db";
-import multer, { Multer } from "multer";
-import { NextRequest } from "next/server";
 
 // declare module "next" {
 //   interface NextApiRequest {

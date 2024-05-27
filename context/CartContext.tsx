@@ -11,12 +11,12 @@ type AddProp = {
   children: ReactNode;
 };
 
-type cartItem = {
+type CartItem = {
   id: string;
   quantity: number;
 };
 type CartContextType = {
-  cartItem: cartItem[];
+  cartItem: CartItem[];
   cartQuantity: number;
   addToCart: (id: string) => void;
   getItemQuantity: (id: string) => void;
@@ -33,7 +33,7 @@ export function useCart() {
 }
 
 export default function CartProvider({ children }: AddProp) {
-  const [cartItem, setCartItem] = useLocalStorageState<cartItem[]>("cart", {
+  const [cartItem, setCartItem] = useLocalStorageState<CartItem[]>("cart", {
     defaultValue: [],
   });
   const [cartQuantity, setCartQuantity] = useState<number>(0);

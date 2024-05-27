@@ -4,11 +4,16 @@ import { HiMenu, HiOutlineX } from "react-icons/hi";
 import { FaShoppingCart, FaStoreAlt } from "react-icons/fa";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { useState } from "react";
+import { cartItemProp } from "./CartItem";
+import { useCart } from "@/context/CartContext";
 
 export default function Navbar() {
   const flexBetween = "flex justify-between items-center";
   const isAboveMediaScreens = useMediaQuery("(min-width: 720px)");
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
+  const { cartQuantity } = useCart();
+  console.log("cartQuantity", cartQuantity);
+
   return (
     <div
       className={`${flexBetween} fixed top-0 py-6 shadow bg-cyan-400 w-full z-30`}
@@ -33,9 +38,11 @@ export default function Navbar() {
                 <Link legacyBehavior href={"/cart"}>
                   <a className="text-lg flex items-center gap-2">
                     Cart
-                    <span>
+                    <FaShoppingCart />
+                    {cartQuantity > 0 && <span>{cartQuantity}</span>}
+                    {/* <span>
                       <FaShoppingCart />
-                    </span>
+                    </span> */}
                   </a>
                 </Link>
                 <Link legacyBehavior href={"/dashboard"}>

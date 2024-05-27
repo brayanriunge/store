@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi";
 
-type cartItemProp = {
+export type cartItemProp = {
   id: string;
   quantity: number;
 };
 
-export default function cartItem({ id, quantity }: cartItemProp) {
+export default function CartItem({ id, quantity }: cartItemProp) {
   const { addToCart, removeFromCart, decreaseCartItem } = useCart();
   const [item, setItem] = useState<ProductsData | null>(null);
 
